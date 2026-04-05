@@ -1,6 +1,6 @@
 {
-  "short_name": "AI Resume Screener",
-  "name": "AI Resume Screening & Candidate Ranking System",
+  "short_name": "Resume Ranker",
+  "name": "Resume Ranker",
   "description": "Automatically score and rank candidate resumes using AI-powered analysis",
   "icons": [
     {

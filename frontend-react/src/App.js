@@ -486,8 +486,8 @@ function App() {
                 <div className="hero-content">
                   <div className="hero-eyebrow">AI-Powered · TF-IDF + spaCy</div>
                   <h1 className="hero-title">
-                    Resume Screening &amp;<br />
-                    <span className="highlight">Candidate Ranking</span>
+                    Resume<br />
+                    <span className="highlight">Ranker</span>
                   </h1>
                   <p className="hero-subtitle">
                     Upload a job description and candidate resumes. Our ML engine scores
@@ -671,7 +671,7 @@ function App() {
             <a href="#how-it-works" onClick={(e) => { e.preventDefault(); scrollTo('how-it-works'); }}>How It Works</a>
             <li><button className="footer-link-btn" onClick={goToHistory}>History</button></li>
           </div>
-          <p className="copyright">© 2024 AI Resume Screener. All rights reserved.</p>
+          <p className="copyright">© 2024 Resume Ranker. All rights reserved.</p>
         </div>
       </footer>
     </div>
