@@ -8,7 +8,7 @@ const Logo = ({ size = 40, showText = true, textClassName = '' }) => {
         height={size} 
         viewBox="0 0 100 100" 
         className="logo-svg"
-        aria-label="AI Resume Screener Logo"
+        aria-label="Resume Ranker Logo"
       >
         <defs>
           <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -39,7 +39,7 @@ const Logo = ({ size = 40, showText = true, textClassName = '' }) => {
       </svg>
       
       {showText && (
-        <span className={`logo-text ${textClassName}`}>AI Resume Screener</span>
+        <span className={`logo-text ${textClassName}`}>Resume Ranker</span>
       )}
     </div>
   );
