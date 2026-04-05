@@ -51,32 +51,55 @@ def preprocess_text(text: str) -> str:
     return " ".join(lemmatized)
 
 
-def calculate_skill_bonus(resume_text: str, 
+# Common technical skills to look for across domains
+SKILL_KEYWORDS = [
+    # Programming languages
+    "python", "java", "javascript", "typescript", "c++", "c#", "r", "scala",
+    "go", "rust", "php", "ruby", "swift", "kotlin", "matlab",
+    # Web / frontend
+    "react", "angular", "vue", "html", "css", "node", "nodejs", "django",
+    "flask", "fastapi", "spring", "express",
+    # Data / ML / AI
+    "machine learning", "deep learning", "nlp", "natural language processing",
+    "computer vision", "neural network", "transformer", "bert", "gpt",
+    "scikit-learn", "tensorflow", "pytorch", "keras", "xgboost", "lightgbm",
+    "pandas", "numpy", "matplotlib", "seaborn", "plotly",
+    "tfidf", "tf-idf", "text processing", "model evaluation",
+    "data visualization", "feature engineering", "data analysis",
+    # Databases
+    "sql", "mysql", "postgresql", "mongodb", "redis", "elasticsearch",
+    "sqlite", "oracle", "dynamodb",
+    # Cloud / DevOps
+    "aws", "azure", "gcp", "docker", "kubernetes", "terraform", "jenkins",
+    "git", "github", "gitlab", "ci/cd", "linux",
+    # Other common
+    "rest api", "graphql", "microservices", "agile", "scrum",
+    "excel", "power bi", "tableau", "spark", "hadoop", "kafka",
+]
+
+
+def calculate_skill_bonus(resume_text: str,
                           jd_text: str):
     """
     Calculate skill bonus based on matched skills between resume and JD.
-    
+    Only skills mentioned in the JD count — resume is checked against those.
+
     Args:
         resume_text: Raw resume text
         jd_text: Raw job description text
-        
+
     Returns:
         Tuple of (bonus_score, list_of_matched_skills)
     """
-    skill_keywords = [
-        "python", "machine learning", "scikit-learn",
-        "pandas", "nlp", "natural language processing",
-        "tfidf", "tf-idf", "text processing",
-        "matplotlib", "sql", "data visualization",
-        "model evaluation", "deep learning"
-    ]
     resume_lower = resume_text.lower()
     jd_lower     = jd_text.lower()
-    jd_skills    = [s for s in skill_keywords if s in jd_lower]
-    
+
+    # Find which skills the JD actually asks for
+    jd_skills = [s for s in SKILL_KEYWORDS if s in jd_lower]
+
     if not jd_skills:
         return 0.0, []
-    
+
     matched = [s for s in jd_skills if s in resume_lower]
     bonus   = (len(matched) / len(jd_skills)) * 0.3
     return round(bonus, 4), matched
