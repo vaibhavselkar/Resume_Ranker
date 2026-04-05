@@ -36,6 +36,8 @@ Thumbs.db
 frontend-react/build/
 frontend-react/node_modules/
 
-# Environment variables
+# Environment variables (never commit secrets)
+.env
 .env.local
 .env.production.local
+backend/.env

@@ -8,12 +8,16 @@ from typing import List, Optional, Dict, Any
 import json
 import csv
 import io
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, Column, Integer, String, Float, Text, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, Session
 
+load_dotenv()
+
 # Database setup
-SQLALCHEMY_DATABASE_URL = "sqlite:///./resume_screening.db"
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./resume_screening.db")
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, 
